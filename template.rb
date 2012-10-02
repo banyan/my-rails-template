@@ -94,7 +94,7 @@ begin
 end
 
 begin
-  run 'script/rails generate rspec:install'
+  run 'bundle exec rails generate rspec:install'
   git add: '.', commit: '-m "Exec rails generate rspec:install"'
 end
 
