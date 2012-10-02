@@ -65,8 +65,14 @@ end
 
 begin
   gem_group :development, :test do
+    gem 'wirb'
+    gem 'hirb-unicode'
+    gem 'quiet_assets'
     gem 'pry-rails'
     gem 'rspec-rails'
+    gem 'fabrication'
+    gem 'faker'
+    gem 'timecop'
     gem 'capybara-webkit'
     gem 'guard-spork'
     gem 'guard-rspec'
