@@ -1,6 +1,6 @@
 ## Usage
 
 ```
-$ bundle install
-$ ./rails-new APP_PATH [options]
+# ~/.railsrc
+-m https://raw.github.com/banyan/my-rails-template/master/template.rb
 ```
