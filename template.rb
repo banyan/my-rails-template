@@ -70,13 +70,7 @@ begin
     gem 'pry-nav'
     gem 'pry-rails'
     gem 'pry-remote'
-    gem 'pry-stack_explorer'
-  end
-  git add: '.', commit: '-m "Add pry to Gemfile"'
-end
 
-begin
-  gem_group :development, :test do
     gem 'rspec-rails'
     gem 'factory_girl_rails'
     gem 'capybara-webkit'
