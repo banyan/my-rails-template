@@ -23,11 +23,7 @@ def gem(*args)
   end
 end
 
-
-
-
 use_haml = yes? 'do you want to use haml?'
-
 
 # reset bundle environment
 ENV.delete('BUNDLE_BIN_PATH')
@@ -36,12 +32,10 @@ ENV.delete('GEM_HOME')
 ENV.delete('GEM_PATH')
 ENV.delete('RUBYOPT')
 
-
 begin
   git :init
   git add: '.', commit: '-m "Exec rails new"'
 end
-
 
 begin
   append_file '.gitignore', deindent(<<-__EOT__)
@@ -50,11 +44,9 @@ begin
     /db/schema.rb
     /db/structure.sql
     /public/assets/
-    /vendor/bundle
   __EOT__
   git add: '.', commit: '-m "Add ignore files"'
 end
-
 
 begin
   if use_haml
@@ -63,7 +55,6 @@ begin
   end
 end
 
-
 begin
   gem_group :development, :test do
     gem 'tapp'
@@ -71,7 +62,6 @@ begin
   end
   git add: '.', commit: '-m "Add tapp to Gemfile"'
 end
-
 
 begin
   gem_group :development, :test do
@@ -84,7 +74,6 @@ begin
   end
   git add: '.', commit: '-m "Add pry to Gemfile"'
 end
-
 
 begin
   gem_group :development, :test do
@@ -100,26 +89,19 @@ begin
   git add: '.', commit: '-m "Add testing frameworks to Gemfile"'
 end
 
-
 begin
-  create_link 'vendor/bundle', Bundler.bundle_path.parent.parent
-
-  run 'bundle install --path vendor/bundle'
-  git add: '.', commit: '-m "Exec bundle install"'
+  run 'bundle install --path .bundle/gems'
 end
-
 
 begin
   run 'script/rails generate rspec:install'
   git add: '.', commit: '-m "Exec rails generate rspec:install"'
 end
 
-
 begin
   gsub_file 'spec/spec_helper.rb', /^ *(?=config\.fixture_path =)/, '\&#'
   git add: '.', commit: '-m "Comment out config for fixture"'
 end
-
 
 begin
   original_spec_helper = File.read('spec/spec_helper.rb')
@@ -136,18 +118,15 @@ begin
   git add: '.', commit: '-m "Modify spec_helper for Spork"'
 end
 
-
 begin
   run 'bundle exec guard init spork'
   git add: '.', commit: '-m "Exec guard init spork"'
 end
 
-
 begin
   run 'bundle exec guard init rspec'
   git add: '.', commit: '-m "Exec guard init rspec"'
 end
-
 
 begin
   append_file '.rspec', deindent(<<-__EOT__)
@@ -159,7 +138,6 @@ begin
   end
   git add: '.', commit: '-m "Add rspec options"'
 end
-
 
 begin
   remove_file 'public/index.html'
