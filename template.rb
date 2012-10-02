@@ -65,14 +65,8 @@ end
 
 begin
   gem_group :development, :test do
-    gem 'plymouth', require: false
-    gem 'pry-exception_explorer'
-    gem 'pry-nav'
     gem 'pry-rails'
-    gem 'pry-remote'
-
     gem 'rspec-rails'
-    gem 'factory_girl_rails'
     gem 'capybara-webkit'
     gem 'guard-spork'
     gem 'guard-rspec'
